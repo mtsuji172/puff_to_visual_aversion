@@ -1,0 +1,7 @@
+[not included in "free" HDD but included in "forTransfer" HDD (genotype of UASFRTstopTNT.-Tk2G4.)] <- present in mydf_all but absent from pose_raw or passedFiles.csv. => should probs copy from "forTransfer" passedFiles.csv along with uniq.myset.csv to "free"
+UASFRTstopTNT.-Tk2G4._0_2020.05.26 (2020.05.26_GENOTYPEUASFRTstopTNT.-Tk2G4._ID0_*)
+UASFRTstopTNT.-Tk2G4._5_2020.05.26
+UASFRTstopTNT.-Tk2G4._6_2020.05.26
+UASFRTstopTNT.-Tk2G4._1_2020.06.02
+
+<= Even so, above files did not pass the criterion of "coverage>0.7" but were included in "forTransfer" somehow. For now, these files were copied to "free" HDD.
