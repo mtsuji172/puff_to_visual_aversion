@@ -23,14 +23,7 @@ parser.add_argument("--preRepeatAcclimation", type=int, default=1020, help="accl
 args = vars(parser.parse_args())
 
 # determine the schedule for test
-mydict = {'1.width':[8], '2.height':[8, 32], '3.npuff':[0,10]}
-allnames= sorted(mydict)
-print(allnames)
-#combinations=it.product(*(mydict[name] for name in allnames))
-#schedule = list(combinations) * 5
-#shuffle(schedule)
-schedule = [(8,8,10),(8,8,10),(8,8,10),(8,8,10),(8,8,10),(8,8,10),(8,8,10),(8,8,10),(8,8,10),(8,8,10),(8,8,0),(8,8,0),(8,8,0),(8,8,0),(8,8,0),(8,8,0),(8,8,0),(8,8,0),(8,8,0),(8,8,0)]
-print(schedule)
+schedule = [(8,8,0),(8,8,10),(8,8,0)]
 
 # set color
 print('setting color..')
@@ -52,7 +45,7 @@ print AngularPosBias
 # recording (trialtype='normal')
 for i in range(len(schedule)):
     puff = True if schedule[i][2]!=0 else False
-    command = 'python singleobject_closed_opto.py --host ' + str(args['host']) + ' --acclimation '+ str(args['acclimation']) + ' -p ' + str(puff) + ' --npuff ' + str(schedule[i][2]) + ' --postPuffInterval ' + str(args['postPuffInterval']) + ' --genotype ' + args['genotype'] + ' --width ' + str(schedule[i][0]) + ' --height ' + str(schedule[i][1]) + ' --ID ' + str(args['ID']) + ' --trial ' + str(i) + ' --AngularPosBias " ' + str(AngularPosBias)+'"' # negative value would be mistakenly recognized as flags if not given in a " -XXX" format
+    command = 'python singleobject_closed_opto_pre.py --host ' + str(args['host']) + ' --acclimation '+ str(args['acclimation']) + ' -p ' + str(puff) + ' --npuff ' + str(schedule[i][2]) + ' --postPuffInterval ' + str(args['postPuffInterval']) + ' --genotype ' + args['genotype'] + ' --width ' + str(schedule[i][0]) + ' --height ' + str(schedule[i][1]) + ' --ID ' + str(args['ID']) + ' --trial ' + str(i) + ' --AngularPosBias " ' + str(AngularPosBias)+'"' # negative value would be mistakenly recognized as flags if not given in a " -XXX" format
 
     print('executing: '+ command)
     os.system(command)

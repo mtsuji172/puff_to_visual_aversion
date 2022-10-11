@@ -33,7 +33,7 @@ print(schedule)
 
 # set color
 print('setting color..')
-command = 'python setcolorON_square.py --host ' + str(args['host']) + ' --acclimation 0 -p False --npuff 0 --postPuffInterval 0 --genotype setcolor --width 1 --height 1 --ID 0 --trial 0 --AngularPosBias 0'
+command = 'python setcolorON.py --host ' + str(args['host']) + ' --acclimation 0 -p False --npuff 0 --postPuffInterval 0 --genotype setcolor --width 1 --height 1 --ID 0 --trial 0 --AngularPosBias 0'
 os.system(command)
 
 # determine the systematic + fly's L-R bias

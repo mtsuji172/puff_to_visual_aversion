@@ -24,10 +24,11 @@ class SingleSquare4Closed(Client):
         print('acclimation...')
         time.sleep(self.args['acclimation'])
 
-        # light ON
-        if int(self.args['npuff']) > 0:
-            self.puff.switch('ON')
-        #time.sleep(10)
+        # puff
+        self.apply_puff(self.args['npuff'])
+        
+        # post-puff interval
+        time.sleep(self.args['postPuffInterval'])
 
         # activate optical sensor 
         self.control_opticalsensor(1)
@@ -42,7 +43,6 @@ class SingleSquare4Closed(Client):
         myrecord = []
         counter = 0
         angularPosition = self.angularPosition_t0
-        loopInterval = 0.10 # in sec
         while True:
             # if counter == 0, initialize stuff
             if counter == 0:
@@ -92,10 +92,6 @@ class SingleSquare4Closed(Client):
             mouse_position_x_prev = mouse_position[0]
             counter += 1
 
-        # light OFF
-        if int(self.args['npuff']) > 0:
-            self.puff.switch('OFF')
-        
         # end the screen (in rare occations, this communication fails -> visual object remains displayed until the next recording begins -> repeat for 3times to be on the safe side)
         for i in range(3):
             self.s.sendall("\n".join([str(500), str(0), str(0), str(0)]))
