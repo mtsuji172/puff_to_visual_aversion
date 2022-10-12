@@ -67,7 +67,7 @@ out.all = lapply(1:length(genotype.set), function(g){
     out.g = 
         lapply(1:length(LEDfreq.set), function(l){
                 subdata.l = subset(subdata.g, LEDfreq == LEDfreq.set[l])
-                t.test(subdata.l$index_throughout)$p.value
+                t.test(subdata.l$index_onset)$p.value
         }) %>% c
     out.g = unlist(out.g)
     data.frame(genotype=genotype.set[g], LEDfreq=LEDfreq.set, p.value=out.g)
@@ -84,7 +84,7 @@ puffeffect$LEDfreq = as.factor(puffeffect$LEDfreq)
 puffeffect$color.label = 'ctrl'
 puffeffect$color.label[with(puffeffect, genotype=='G4' & LEDfreq==6)] = 'main'
 puffeffect$color.label[with(puffeffect, genotype=='G4' & LEDfreq!=6)] = 'other'
-ggplot(subset(puffeffect, uniq%in%uniq.myset), aes(LEDfreq, index_throughout)) +
+ggplot(subset(puffeffect, uniq%in%uniq.myset), aes(LEDfreq, index_onset)) +
 	facet_wrap(.~genotype) +
 	labs(x='',y='') +
     theme_classic() +
@@ -106,7 +106,7 @@ out.all = lapply(1:length(genotype.set), function(g){
     out.g = 
         lapply(1:length(LEDfreq.set), function(l){
                 subdata.l = subset(subdata.g, LEDfreq == LEDfreq.set[l])
-                t.test(subdata.l$index_throughout)$p.value
+                t.test(subdata.l$index_onset)$p.value
         }) %>% c
     out.g = unlist(out.g)
     data.frame(genotype=genotype.set[g], LEDfreq=LEDfreq.set, p.value=out.g)
@@ -119,7 +119,7 @@ genotype.set = unique(puffeffect$genotype)
 for(x in 1:length(genotype.set)){
     result = 
         subset(puffeffect, uniq%in%uniq.myset & genotype == genotype.set[x]) %>%
-        {aov(index_throughout~as.factor(LEDfreq), data=.)} %>%
+        {aov(index_onset~as.factor(LEDfreq), data=.)} %>%
         TukeyHSD
     print(genotype.set[x])
     print(result)
@@ -133,7 +133,7 @@ out =
     lapply(1:length(genotype.set), function(g){
         lapply(1:length(LEDfreq.set), function(x){
             puffeffect.sub = subset(puffeffect, uniq%in%uniq.myset & genotype%in%c(control, genotype.set[g]) & LEDfreq == LEDfreq.set[x])
-            myp = t.test(index_throughout~genotype, puffeffect.sub)$p.value
+            myp = t.test(index_onset~genotype, puffeffect.sub)$p.value
             result = data.frame(genotype=genotype.set[g], LEDfreq=LEDfreq.set[x], pvalue=myp)
         }) %>% bind_rows
     }) %>% bind_rows
@@ -143,7 +143,7 @@ print(out)
 # plot ethogram
 LEDfreq.set = unique(subset(pose_raw, trialtype=='normal')$LEDfreq) %>% sort
 plots = lapply(1:length(LEDfreq.set), function(k){
-                   myplot = ethogram(subset(pose_raw, trialtype=='normal' & LEDfreq==LEDfreq.set[k] & uniq_trial_trialtype_LEDfreq%in%OKtrials4pose_throughout))
+                   myplot = ethogram(subset(pose_raw, trialtype=='normal' & LEDfreq==LEDfreq.set[k] & uniq_trial_trialtype_LEDfreq%in%OKtrials4pose_onset))
         }) %>% c
 do.call('grid.arrange', c(plots, ncol=2, as.table=F))
 
