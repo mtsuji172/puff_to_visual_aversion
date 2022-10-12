@@ -38,7 +38,6 @@ class SingleSquare4Closed(Client):
         myrecord = []
         counter = 0
         angularPosition = self.angularPosition_t0
-        loopInterval = 0.10 # in sec
         while True:
             # if counter == 0, initialize stuff
             if counter == 0:
