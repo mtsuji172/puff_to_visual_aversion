@@ -21,7 +21,7 @@ CPU (and accordingly RAM) usage can be relatively high due to parallel processin
 2-1. Instructions
 
 Softwares
-Please refer to the manufacturer's installation guide to install ThorImage LS (v3.2.2018.4241) and MaiTai (v0250-2.00.23).
+Please refer to the manufacturer's installation guide to install ThorImage LS (v3.2.2018.4241), MaiTai (v0250-2.00.23), and Arduino IDE (v.1.8.19).
 
 
 LED matrices
