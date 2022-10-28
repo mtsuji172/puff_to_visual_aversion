@@ -21,12 +21,14 @@ CPU (and accordingly RAM) usage can be relatively high due to parallel processin
 Softwares
 
 Install rpi-rgb-led-matrix software (https://github.com/hzeller/rpi-rgb-led-matrix) to Raspberry Pi with the following parameters:
- led-rows=16
- led-cols=32
- led-chain=6
- led-gpio-mapping=adafruit-hat-pwm
- led-pwm-bits=4
- led-pwm-lsb-nanoseconds=80
+ led-rows=16 ;
+ led-cols=32 ;
+ led-chain=6 ;
+ led-gpio-mapping=adafruit-hat-pwm ;
+ led-pwm-bits=4 ;
+ led-pwm-lsb-nanoseconds=80.
+ 
+Please refer to the manufacturer's installation guide to install Arduino IDE (v.1.8.19).
 
 Cameras
 
