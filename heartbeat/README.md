@@ -17,22 +17,19 @@ CPU (and accordingly RAM) usage can be relatively high due to parallel processin
 
 <b>2. Installation guide</b>
 
-2-1. Instructions
-
-Softwares
 Please refer to the manufacturer's installation guide to install LASX (v1.1.0.12420) and Arduino IDE (v.1.8.19).
 
 
 
 <b>3. Instructions for use / Demo</b>
 
-3-1. Data acquisition
+<b>3-1. Data acquisition</b>
 
 After transferring a fly under the microscope, execute the following command:
 python record.py
 Then the data acquisition should automatically proceed and complete within 17min. Be sure that "start" button on LASX is not overlaid by another window, as record.py involves virtual clicking of this button. The program generates image sequences of two trials per fly, each stored temporarily in the LASX software. You may rename each file later and save data to disk in a .lif format.To use our analysis code without modification, each file must be named like so: "DATEXXX_GENOTYPEXXX_DPEXXX_IDXXX_TRIALXXX.avi".
 
-3-2. Data analysis
+<b>3-2. Data analysis</b>
 
 Each data stored in a lif file must first be exported to individual avi files. This can be done manually using Fiji, but we use a mini macro script to automate this process, like so:
 ImageJ-linux64 -macro lif2avi.ijm path/to/dir/containing/lif/files/

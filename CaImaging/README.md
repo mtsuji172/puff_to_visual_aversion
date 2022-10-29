@@ -2,7 +2,7 @@ This directory contains codes for acquiring and analyzing Calcium imaging data o
 
 <b>1. System requirements</b>
 
-1-1. Data acquisition
+<b>1-1. Data acquisition</b>
 
 Supports Windows 10 operating system. This is currently our only supported platform.
 No special requirements exist for CPU, RAM, Disk space/ speed. We have tested on a PC with XXX.
@@ -10,7 +10,7 @@ For control of LED matrices, Raspberry Pi 2 installed with Adafruit HAT is requi
 For control of a solenoid valve to implement air puff applications, Arduino/ Genuino Uno is required.
 For acquisition of the Calcium images, ThorImageLS (v3.2.2018.4241) and MaiTai (v0250-2.00.23) is required to control the Thorlabs Bergamo two-photon microscope and Mai Tai 2 laser. 
     
-1-2. Data analysis
+<b>1-2. Data analysis</b>
 
 CPU (and accordingly RAM) usage can be relatively high due to parallel processing implementation, but the original code can be tweaked to limit the number of CPUs used. Requires Fiji (v2.3.0) for multi-ROI GCaMP quantification.
 
@@ -18,7 +18,7 @@ CPU (and accordingly RAM) usage can be relatively high due to parallel processin
 
 <b>2. Installation guide</b>
 
-2-1. Instructions
+<b>2-1. Instructions</b>
 
 Softwares
 Please refer to the manufacturer's installation guide to install ThorImage LS (v3.2.2018.4241), MaiTai (v0250-2.00.23), and Arduino IDE (v.1.8.19).
@@ -29,14 +29,14 @@ LED matrices
 We use Medium 16x32 RGB LED matrix panel 420 (Adafruit) for visual stimulation. Hardware and software configurations were based on rpi-rgb-led-matrix software (https://github.com/hzeller/rpi-rgb-led-matrix).
 
 
-2-2. Typical install time on a "normal" desktop computer
+<b>2-2. Typical install time on a "normal" desktop computer</b>
 
 Installation of the rpi-rgb-led-matrix software should complete within minutes.
 
 
 <b>3. Instrcutions for use / Demo</b>
 
-3-1. Data acquisition
+<b>3-1. Data acquisition</b>
 First, execute a server program (in "./data_acquisition/" directory) in the Raspberry Pi by:
 sudo ./server.py
 
@@ -46,7 +46,7 @@ After completing above steps, data acquisition is to proceed automatically and s
 
 These sequential images can then be passed to analysis codes.
 
-3-2. Data analysis
+<b>3-2. Data analysis</b>
 
 (preprocessing: files are stored in "./data_analysis/GCaMP7f(or6s)/preprocessing/")
 Assuming that the data are two-channel images of green (GCaMP signal) and red (autofluorescence of the tissue or bleed-through of the blue light from LED matrices) if the fly is not expressing RFP or its variants), we will first subtract noise (red) from GCaMP signal (green) frame by frame. We will also have to address the issue of the brain tissue moving slightly from time to time. Both of these can be achieved by running:
