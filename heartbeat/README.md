@@ -2,14 +2,14 @@ This directory contains codes for acquiring and analyzing the heartbeat imaging 
 
 <b>1. System requirements</b>
 
-1-1. Data acquisition
+<b>1-1. Data acquisition</b>
 
 Supports Windows 7 operating system. This is currently our only supported platform.
 No special requirements exist for CPU, RAM, Disk space/ speed. We have tested on a PC with Intel(R) Xeon(R) CPU E5-2650 0, 16GB RAM.
 For control of a solenoid valve to implement air puff applications, Arduino/ Genuino Uno is required.
 For acquisition of the heartbeat images, Leica SP8 confocal microscopy and its control software LASX (v1.1.0.12420) are required.
     
-1-2. Data analysis
+<b>1-2. Data analysis</b>
 
 CPU (and accordingly RAM) usage can be relatively high due to parallel processing implementation, but the original code can be tweaked to limit the number of CPUs used. Requires Fiji (v2.3.0) for multi-ROI GCaMP quantification.
 
