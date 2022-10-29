@@ -45,17 +45,17 @@ Installation of the rpi-rgb-led-matrix software should complete within minutes.
 
 3. Instrcutions for use / Demo
 
-After transferring a fly to the LED arena, do the following steps to acquire data:
+After transferring a fly to the LED arena, do the following steps to acquire data (files are contained in ther "./data_acquisition" directory):
 
-Execute a server file in the Raspberry Pi: sudo ./darkobject.py
+Execute a server file (in "./data_acquisition/server/" directory) in the Raspberry Pi: sudo ./darkobject.py
 
-On the PC, execute the main program: python repeatExecute_singleobject.py --host ip.of.raspi --genotype yourGenotype --ID IDofFly
+On the PC, execute the main program (in "./data_acquisition/client/"): python repeatExecute_singleobject.py --host ip.of.raspi --genotype yourGenotype --ID IDofFly
 
 After completing above steps, data acquisition is to proceed automatically, and in the case of repeatExecute_singleobject.py, should last for approximately 40min to complete 10 trials. Resulting data of each trial are: ball tracking csv file, video file, and json metadata file. 
 
 3-1. AI-aided identification of behaviors
 
-First we need to prepare a training data set. This can be achieved by the following steps:
+First we need to prepare a training data set. This can be achieved by the following steps (files are contained in "./data_analysis/AI/train/"):
 
 (i) Convert avi files into cropped jpg images, like so:
 python movie2croppedImages.py -d path/to/dir/containing/avi/files/
@@ -78,6 +78,7 @@ python train_model.py -d path/to/dir/containing/training/dataset/
 
 It takes hours but probably not days to complete, depending on your training data set and your PC. The result is saved as a mymodel.model file (the model per se) and a lb.pickle file (label binarizer).
 
+(files used in the following are contained in "./data_analysis/AI/")
 Before utilizing the trained model, we must first convert each video file to cropped "average" image sequences as we did to prepare a training data set. This can be conveniently done like so:
 python preprocess.py -a path/to/dir/containing/videos/
 
@@ -88,7 +89,7 @@ The resultant frame-wise predictions are stored in path/to/output/dir/ as a csv 
 python statistics.py -p path/to/dir/containing/frame-wise/predictions/ -o path/to/output/dir/
 
 
-3-2. Analysis of ball tracking results
+3-2. all the other analyses (ball tracking, integration with AI-identified behaviors) (files are contained in "./data_analysis/others/" directory)
 Open up main_CS.R (or other main_~.R files) with your favorite editor and execute line-by-line. This program analyzes the ball tracking results and integrates those results with the behavior labeling results.
 
 

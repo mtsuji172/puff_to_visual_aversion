@@ -36,11 +36,15 @@ Then the data acquisition should automatically proceed and complete within 17min
 
 Each data stored in a lif file must first be exported to individual avi files. This can be done manually using Fiji, but we use a mini macro script to automate this process, like so:
 ImageJ-linux64 -macro lif2avi.ijm path/to/dir/containing/lif/files/
+
 This converts all the lif files stored in path into individual avi files in batch. Note that fiji may need to be open in another thread for this program to work.
 
-The resultant avi files can then be converted into "heartbeat tracking" csv files, in batch, by: python avi2csv.py -d path/to/dir/containing/avi. It could take 10min to 20min to complete a single file, depending on your system, but our code process multiple files in parallel to minimize the overall processing time. 
+The resultant avi files can then be converted into "heartbeat tracking" csv files, in batch, by:
+python avi2csv.py -d path/to/dir/containing/avi
+
+It could take 10min to 20min to complete a single file, depending on your system, but our code process multiple files in parallel to minimize the overall processing time. 
 
 Metadata (in json format) can be extracted from the name of csv files in batch by executing like so:
 python get_metadata.py -d path/to/dir/containing/avi/files/
 
-The csv and json files can then be used to analyze the heart rate etc. using our main.R code.
+The csv and json files can then be used to analyze the heart rate etc. using our main.R code. Open main.R with your favorite editor and execute line by line.

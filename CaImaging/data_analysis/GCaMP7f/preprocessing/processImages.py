@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# python processImages.py ../Tk-GCaMP6s/
+# python processImages.py path/to/dir/containing/image/sequences/ 
 
 from alignImages import AlignImages
 import os
