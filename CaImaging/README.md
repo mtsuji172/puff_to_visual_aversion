@@ -36,6 +36,6 @@ Installation of the rpi-rgb-led-matrix software should complete within minutes.
 
 3. Instrcutions for use / Demo
 
-First, execute a server program in the Raspberry Pi by: sudo ./darkobject.py. This program waits for a key input: if you press "s", the program sends a TTL signal to Bergamo 2P microscope to initiate the imaging; if you press "p", the program start sending a TTL signal to arduino to initiate applying air puffs (to adjust the puff-delivering glass pipette position before recording. We recommend you set the air pressure minimum to prevent the fly from desensitizing to puffs.  
+First, execute a server program in the Raspberry Pi by: sudo ./darkobject.py. This program waits for a key input: if you press "s", the program sends a TTL signal to Bergamo 2P microscope to initiate the imaging (and to arduino for puff application when appropriate); if you press "t", the program start sending a TTL signal to arduino to initiate applying air puffs so that you can adjust the puff-delivering glass pipette position/angle before recording. We recommend you set the air pressure minimum while adjusting to prevent the fly from desensitizing to puffs; if you press "q", the program quits.  
 
 After completing above steps, data acquisition is to proceed automatically and should last for 80s to complete a single trial. Resulting data is an image sequence. 
