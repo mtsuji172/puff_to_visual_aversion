@@ -20,7 +20,6 @@ class Preprocess(object):
         # build argument parser
         ap = argparse.ArgumentParser()
         ap.add_argument("-a", "--avipath", type=str, help="dir housing videos")
-        ap.add_argument("-s", "--selectROI", type=str, default="True", help="select ROI? if False, will try to load 'selectROI.json' in avipath")
         self.args = vars(ap.parse_args())
 
     def RepresentsInt(self, s):

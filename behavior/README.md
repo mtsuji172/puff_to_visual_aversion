@@ -47,8 +47,49 @@ Installation of the rpi-rgb-led-matrix software should complete within minutes.
 
 After transferring a fly to the LED arena, do the following steps to acquire data:
 
-3-1. Execute a server file in the Raspberry Pi: sudo ./darkobject.py
+Execute a server file in the Raspberry Pi: sudo ./darkobject.py
 
-3-2. On the PC, execute the main program: python repeatExecute_singleobject.py --host ip.of.raspi --genotype yourGenotype --ID IDofFly
+On the PC, execute the main program: python repeatExecute_singleobject.py --host ip.of.raspi --genotype yourGenotype --ID IDofFly
 
 After completing above steps, data acquisition is to proceed automatically, and in the case of repeatExecute_singleobject.py, should last for approximately 40min to complete 10 trials. Resulting data of each trial are: ball tracking csv file, video file, and json metadata file. 
+
+3-1. AI-aided identification of behaviors
+
+First we need to prepare a training data set. This can be achieved by the following steps:
+
+(i) Convert avi files into cropped jpg images, like so:
+python movie2croppedImages.py -d path/to/dir/containing/avi/files/
+
+This program prompts you to manually set ROI for each video as it proceeds.
+
+(ii) Generate "average" images of three consecutive images, like so:
+python generate_mean.py -d path/to/dir/containing/images/
+
+(iii) Manually label each of the average images, and save the labels as "label.csv" in the corresponding dir containing average images. 
+
+(iv) Sort images into directories of each behavioral label, like so:
+python sort_images.py
+
+(v) augment images like so:
+python augment_images.py -d path/to/images/ -o path/to/save/augmented/images/ -t "# of training samples to generate"
+
+Then we train the model, like so:
+python train_model.py -d path/to/dir/containing/training/dataset/
+
+It takes hours but probably not days to complete, depending on your training data set and your PC. The result is saved as a mymodel.model file (the model per se) and a lb.pickle file (label binarizer).
+
+Before utilizing the trained model, we must first convert each video file to cropped "average" image sequences as we did to prepare a training data set. This can be conveniently done like so:
+python preprocess.py -a path/to/dir/containing/videos/
+
+Now we are ready to apply our trained model to label each frame, like so:
+python -i path/to/average/images/ -m path/to/trained/model/ -l path/to/label/binarizer/ -p path/to/output/dir/
+
+The resultant frame-wise predictions are stored in path/to/output/dir/ as a csv file per video. These data can now be analyzed to obtain the overall frequency of each behavior per video, like so:
+python statistics.py -p path/to/dir/containing/frame-wise/predictions/ -o path/to/output/dir/
+
+
+3-2. Analysis of ball tracking results
+Open up main_CS.R (or other main_~.R files) with your favorite editor and execute line-by-line. This program analyzes the ball tracking results and integrates those results with the behavior labeling results.
+
+
+Note: in case a pair of directories/ files exist with identical names except that one additionally contains "\_LEDfreq", the one with "\_LEDfreq" is the modified version of the original for experiments in which varying LED frequencies are to be tested.

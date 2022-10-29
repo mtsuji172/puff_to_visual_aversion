@@ -32,7 +32,7 @@ def generate_mean(imagePath):
     filename_split = filename.split('_')
     mean_grandparentdir = '/'.join(imagePath_split[:-3])+'/'+ imagePath_split[-3]+'_mean/'
     mean_parentdir = '/'.join(imagePath_split[:-3])+'/'+ imagePath_split[-3]+'_mean/' + imagePath_split[-2] + '/'
-    filename_mean = mean_parentdir + filename.replace('.jpg','')+"_mean.jpg"
+    filename_mean = mean_parentdir + filename
     if os.path.isfile(filename_mean):
         #bar.next()
         #continue

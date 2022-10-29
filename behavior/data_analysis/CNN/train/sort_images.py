@@ -12,8 +12,8 @@ from tqdm import tqdm
 from pathlib import Path
 
 # params
-parent_dir = '/media/masato/forTransfer/data/main/CS/images_mean/CALIB/'
-out_dir = '/media/masato/forTransfer/DL/train/images_trainingset/image_sorted_l7_mean/'
+parent_dir = 'path/to/dir/containing/images_mean/dir/for/each/movie/'
+out_dir = 'path/to/out/dir/'
 
 # list up child dirs
 child_dirs = os.listdir(parent_dir)

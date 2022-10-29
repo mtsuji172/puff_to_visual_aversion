@@ -2,7 +2,7 @@
 library(dplyr)
 
 # params
-path = '/media/masato/forTransfer/data/main/CS/images_mean/'
+path = 'path/to/dir/containing/images_mean/'
 
 # list up dirs
 dirs = list.dirs(path, recursive=F)

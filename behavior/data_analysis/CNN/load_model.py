@@ -26,7 +26,7 @@ ap.add_argument("-m", "--model", required=True,
 ap.add_argument("-l", "--labelbin", required=True,
 	help="path to label binarizer")
 ap.add_argument("-p", "--predictions", type=str,
-        help="output dir")
+    help="output dir")
 args = vars(ap.parse_args())
 
 # params
