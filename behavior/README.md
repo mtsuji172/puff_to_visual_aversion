@@ -1,6 +1,6 @@
 This directory contains codes for acquiring and analyzing behavioral data of the fly-on-the-ball paradigm.
 
-1. System requirements
+<b>1. System requirements</b>
 
 1-1. Data acquisition
 
@@ -14,7 +14,7 @@ For control of a solenoid valve to implement air puff applications, Arduino/ Gen
 CPU (and accordingly RAM) usage can be relatively high due to parallel processing implementation, but the original code can be tweaked to limit the number of CPUs used. Machine-learning algorithm has only been tested on NVIDIA GeForce GTX 1660 SUPER, CUDA Version: 11.4, Driver Version: 470.141.03. 
 
 
-2. Installation guide
+<b>2. Installation guide</b>
 
 2-1. Instructions
 
@@ -43,7 +43,7 @@ We use Medium 16x32 RGB LED matrix panel 420 (Adafruit) for visual stimulation. 
 Installation of the rpi-rgb-led-matrix software should complete within minutes.
 
 
-3. Instrcutions for use / Demo
+<b>3. Instrcutions for use / Demo</b>
 
 After transferring a fly to the LED arena, do the following steps to acquire data (files are contained in ther "./data_acquisition" directory):
 

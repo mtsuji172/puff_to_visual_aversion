@@ -1,6 +1,6 @@
 This directory contains codes for acquiring and analyzing Calcium imaging data of the adult fly brain.
 
-1. System requirements
+<b>1. System requirements</b>
 
 1-1. Data acquisition
 
@@ -16,7 +16,7 @@ CPU (and accordingly RAM) usage can be relatively high due to parallel processin
 
 
 
-2. Installation guide
+<b>2. Installation guide</b>
 
 2-1. Instructions
 
@@ -34,7 +34,7 @@ We use Medium 16x32 RGB LED matrix panel 420 (Adafruit) for visual stimulation. 
 Installation of the rpi-rgb-led-matrix software should complete within minutes.
 
 
-3. Instrcutions for use / Demo
+<b>3. Instrcutions for use / Demo</b>
 
 3-1. Data acquisition
 First, execute a server program (in "./data_acquisition/" directory) in the Raspberry Pi by:

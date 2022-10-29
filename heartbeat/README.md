@@ -1,6 +1,6 @@
 This directory contains codes for acquiring and analyzing the heartbeat imaging data of the adult fly.
 
-1. System requirements
+<b>1. System requirements</b>
 
 1-1. Data acquisition
 
@@ -15,7 +15,7 @@ CPU (and accordingly RAM) usage can be relatively high due to parallel processin
 
 
 
-2. Installation guide
+<b>2. Installation guide</b>
 
 2-1. Instructions
 
@@ -24,7 +24,7 @@ Please refer to the manufacturer's installation guide to install LASX (v1.1.0.12
 
 
 
-3. Instructions for use / Demo
+<b>3. Instructions for use / Demo</b>
 
 3-1. Data acquisition
 
