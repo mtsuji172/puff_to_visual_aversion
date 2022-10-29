@@ -59,6 +59,6 @@ Next we will select ROIs for signal quantification. This can be achieved in Fiji
 Finally, we will quantify the total signal intensities in each ROI, of all the trials in batch, by running:
 python multimeasure.py path/to/directory/containing/subdirectories/of/all/trials/
 
-This code assumes that you have Fiji executable installed as ~/bin/fiji/ImageJ-linux64. Location of the executable can be modified in "multimeasure.py" file L30-31. Headless mode is faster but sometimes fail to execute for unknown reason. You may try it out by adding "--headless" flag to L30-31 after "~/bin/fiji/ImageJ-linux64".
+This code assumes that you have Fiji executable installed as $HOME/bin/fiji/ImageJ-linux64. Location of the executable can be modified in "multimeasure.py" file L30-31. Headless mode is faster but sometimes fail to execute for unknown reason. You may try it out by adding "--headless" flag to L30-31 after "$HOME/bin/fiji/ImageJ-linux64".
 
 The result is saved as "Results.csv" in each of the "aligned" directory. These data can be further analyzed by the codes in "./data_analysis/GCaMP7f/statistics/". Just open each of the main~.R file with your favorite editor and execute line by line.
