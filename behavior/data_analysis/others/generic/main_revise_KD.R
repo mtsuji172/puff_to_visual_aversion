@@ -61,7 +61,7 @@ write.csv(select(puffeffect, c('genotype','index_onset')), paste0(mydir, 'raw.cs
 # nsize
 nsize = summary(as.factor(puffeffect$genotype)) %>% as.data.frame
 print(nsize)
-write.csv(nsize, paste0(mydir, 'nsize.csv'), row.names=T)
+write.csv(nsize, paste0(root, mydir, 'export/nsize.csv'), row.names=T)
 
 
 # stat (within genotype)
@@ -71,7 +71,7 @@ out = NULL
 for(g in 1:length(genotype.set)){
     puffeffect.g = subset(puffeffect, genotype==genotype.set[g])
     shapiro = puffeffect.g$index_onset %>% shapiro.test
-    print(shapiro) %>% capture.output %>% write.table(paste0(mydir, 'puffeffect_shapiro_stat_',genotype.set[g],'.txt'), row.names=F, col.names=F)
+    print(shapiro) %>% capture.output %>% write.table(paste0(root, mydir, 'export/puffeffect_shapiro_stat_',genotype.set[g],'.txt'), row.names=F, col.names=F)
 
     if(shapiro$p.value < 0.05){
         mytest = wilcox.test(puffeffect.g$index_onset)
@@ -92,7 +92,7 @@ if(nrow(out) > 1){
     out$p.adjusted = p.adjust(out$p.value, method=p.adjust.method)
 }
 out
-write.csv(out, paste0(mydir, 'puffeffect_stat_ingeno.csv'), row.names=F)
+write.csv(out, paste0(root, mydir, 'export/puffeffect_stat_ingeno.csv'), row.names=F)
 
 
 # stat (between genotypes)
@@ -114,6 +114,7 @@ out =
         colnames(mytest.df) = c('method','parameter','statistic','p.value')
         data.frame(genotype=genotype.set[g], mytest.df)
     }) %>% bind_rows
+out$p.adjusted = p.adjust(out$p.value, method='bonferroni')
 out
-write.csv(out, paste0(mydir, 'puffeffect_stat_betweenGeno.csv'), row.names=F)
+write.csv(out, paste0(root, mydir, 'export/puffeffect_stat_betweenGeno.csv'), row.names=F)
 

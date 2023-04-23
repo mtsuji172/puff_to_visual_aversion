@@ -139,5 +139,6 @@ out =
         colnames(mytest.df) = c('method','parameter','statistic','p.value')
         data.frame(genotype=genotype.set[g], mytest.df)
     }) %>% bind_rows
+out$p.adjusted = p.adjust(out$p.value, method='fdr')
 out
 write.csv(out, paste0(mydir, 'puffeffect_stat_betweenGeno.csv'), row.names=F)
